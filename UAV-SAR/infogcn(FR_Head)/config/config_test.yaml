@@ -1,0 +1,76 @@
+# # feeder
+# feeder: feeders.feeder_testb.Test_Feeder
+# train_feeder_args:
+#   data_path: data/train_joint_new.npy
+#   label_path: data/train_label_new.npy
+#   split: train
+#   debug: False
+#   random_choose: False
+#   random_shift: False
+#   random_move: False
+#   window_size: 64
+#   normalization: False
+#   random_rot: True
+#   p_interval: [0.5, 1]
+
+# test_feeder_args:
+#   data_path: data/test_joint_B_new.npy
+#   # split: test
+#   window_size: 64
+#   p_interval: [0.95]
+#   debug: False
+#   vel: True
+#   bone: False
+
+# model: model.ske_mixf.Model
+# model_args:
+#   num_class: 155
+#   num_point: 17
+#   num_person: 2
+#   graph: graph.uav.Graph
+#   graph_args:
+#     labeling_mode: 'spatial'
+
+# #optim
+# weight_decay: 0.0005
+# base_lr: 0.2
+# step: [50]
+# warm_up_epoch: 5
+
+# # training
+# device: 0
+# batch_size: 128
+# test_batch_size: 128
+# num_epoch: 70
+
+feeder: feeders.feeder_testb.Test_Feeder
+
+data_path: data/test_joint_B_new.npy
+window_size: 64
+random_rot: True
+use_vel: False
+
+# model
+num_class: 155
+num_point: 17
+num_person: 2
+graph: graph.uav.Graph
+k: 1
+in_channels: 3
+cl_mode: Null
+
+#optim
+weight_decay: 0.0005
+base_lr: 0.1
+step: [90, 100]
+warm_up_epoch: 5
+
+# training
+device: 0
+batch_size: 128
+test_batch_size: 128
+num_epoch: 110
+nesterov: True
+
+half: True
+# nesterov: True
